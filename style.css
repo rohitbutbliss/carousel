@@ -1,0 +1,142 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+#carousel-container {
+  width: 60%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+#main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.btn {
+  border-radius: 50%;
+  background-color: white;
+  width: 40px;
+  padding: 5px;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+.btn > img {
+  width: 100%;
+}
+
+#left-btn {
+  left: 10px;
+  transform: translate(0, -50%) rotate(90deg);
+}
+
+#right-btn {
+  right: 10px;
+  transform: translate(0, -50%) rotate(-90deg);
+}
+
+#images {
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
+#images > img {
+  position: absolute;
+  width: 100%;
+  left: inherit;
+  right: -100%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#images > img.first-img {
+  left: 0;
+}
+
+#images > img.slide-left {
+  animation: sliding-left 0.5s ease-in-out forwards;
+}
+
+#images > img.slide-left-current {
+  animation: sliding-left-current 0.5s ease-in-out forwards;
+}
+
+#images > img.slide-right {
+  animation: sliding-right 0.5s ease-in-out forwards;
+}
+
+#images > img.slide-right-current {
+  animation: sliding-right-current 0.5s ease-in-out forwards;
+}
+
+@keyframes sliding-left {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes sliding-left-current {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes sliding-right {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+@keyframes sliding-right-current {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.dot.active {
+  opacity: 1;
+}
+
+#dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
